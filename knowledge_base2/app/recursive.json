@@ -1,0 +1,35 @@
+[
+  {
+    "shortName": "About smth",
+    "fullName": "Story about butterflies",
+    "articles": [
+      {
+        "shortName": "Gertgh",
+        "fullName": "Biiiig article",
+        "text": "The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document."
+      },
+      {
+        "shortName": "How",
+        "fullName": "How To Create",
+        "text": "The Modal plugin is a dialog box/popup window that is displayed on top"
+      }
+    ],
+    "children": [
+      {
+        "shortName": "Big Man",
+        "fullName": "Report about Jugn",
+        "articles": [
+          {
+            "shortName": "Gertgh",
+            "fullName": "Biiiig article",
+            "text": "The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "shortName": "NEEEW",
+    "fullName": "YEEEES"
+  }
+]

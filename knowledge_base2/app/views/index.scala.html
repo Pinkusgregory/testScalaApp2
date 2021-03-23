@@ -1,0 +1,48 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ *@
+@import helper._
+
+@(articleForm: Form[models.ArticleWithoutId],
+        chapterForm: Form[models.ChapterWithoutId]
+)(
+        implicit request: RequestHeader,
+        msg: Messages
+        )
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sandbox</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="@routes.Assets.versioned("javascripts/modal.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/addChaptersAndArticlesIndex.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <ol id = "contents" type="1">
+
+        </ol>
+
+        @form(action = CSRF(routes.MainController.loadFromJson)) {
+            <input class="button" type="submit" value="Add db">
+        }
+
+        <button id="chapterCreateBtn">Create chapter</button>
+
+        <div id="myModal" class='modal'>
+            <div id="chapterCreate" class='modal-content'>
+                <span class='close-modal'>×</span>
+                @form(action = CSRF(routes.ChapterController.create("0"))) {
+                    @inputText(chapterForm("short_name"))
+                    @inputText(chapterForm("full_name"))
+
+                    <input class="button" type="submit" value="Add chapter">
+                    }
+            </div>
+        </div>
+    </body>
+</html>

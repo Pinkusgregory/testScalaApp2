@@ -1,0 +1,83 @@
+@import helper._
+
+@(
+    chapter: Chapter,
+    chapterForm: Form[ChapterWithoutId],
+    articleForm: Form[ArticleWithoutId]
+)(
+    implicit request: RequestHeader,
+    msg: Messages
+)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>@chapter.shortName</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="@routes.Assets.versioned("javascripts/chapterPage.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/modal.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <a href="/">
+            <div class="backBtn">
+                Back
+            </div>
+        </a>
+        <h2>@chapter.fullName</h2>
+        <ol id = "contents" type="1">
+
+        </ol>
+
+        <button id="articleCreateBtn">Create article</button>
+        <br>
+        <button id="chapterCreateBtn">Create chapter</button>
+        <br>
+        <button id="chapterDeleteBtn">Delete chapter</button>
+        <br>
+        <button id="chapterUpdateBtn">Update chapter</button>
+
+        <div id="myModal" class='modal'>
+            <div id="articleCreate" class='modal-content'>
+                <span class='close-modal'>×</span>
+                @form(action = CSRF(routes.ArticleController.create(chapter.id))) {
+                    @inputText(articleForm("short_name"))
+                    @inputText(articleForm("full_name"))
+                    @inputText(articleForm("text"))
+
+                    <input class="button" type="submit" value="Add article">
+                    }
+            </div>
+
+            <div id="chapterCreate" class='modal-content'>
+                <span class='close-modal'>×</span>
+                @form(action = CSRF(routes.ChapterController.create(chapter.id))) {
+                    @inputText(chapterForm("short_name"))
+                    @inputText(chapterForm("full_name"))
+
+                    <input class="button" type="submit" value="Add chapter">
+                    }
+            </div>
+
+            <div id="chapterDelete" class='modal-content'>
+                <span class='close-modal'>×</span>
+                @form(action = routes.ChapterController.delete(chapter.id)) {
+                    <input class="button" type="submit" value="Delete chapter">
+                    }
+            </div>
+
+            <div id="chapterUpdate" class='modal-content'>
+                <span class='close-modal'>×</span>
+                <form method="get" action="@routes.ChapterController.update(chapter.id, chapter.upperChapterId)">
+                    <label for="short_name">Short Name</label>
+                    <input type="text" name="short_name" value="@chapter.shortName">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" name="full_name" value="@chapter.fullName">
+                    <input class="button" type="submit" value="Update chapter">
+                </form>
+            </div>
+        </div>
+
+    </body>
+</html>

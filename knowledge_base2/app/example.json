@@ -1,0 +1,32 @@
+{
+  "article": [
+    {
+      "id": "1",
+      "shortName": "Gertgh",
+      "fullName": "Biiiig article",
+      "text": "The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document.",
+      "upperChapterId": "1"
+    },
+    {
+      "id": "2",
+      "shortName": "How",
+      "fullName": "How To Create",
+      "text": "The Modal plugin is a dialog box/popup window that is displayed on top",
+      "upperChapterId": "2"
+    }
+  ],
+  "chapter": [
+    {
+      "id": "1",
+      "shortName": "About smth",
+      "fullName": "Story about butterflies",
+      "upperChapterId": "0"
+    },
+    {
+      "id": "2",
+      "shortName": "Big Man",
+      "fullName": "Report about Jugn",
+      "upperChapterId": "1"
+    }
+  ]
+}
